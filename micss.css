@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    background: blueviolet;
+}
+
+
+section {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    /*  1.bmp
+        
+        La propiedad transform-style CSS establece si el elemento hijo esta posicionado en el espacio 3D (preserve-3d) o esta integrado(flat) en el plano del elemento. 
+
+        https://developer.mozilla.org/es/docs/Web/CSS/transform-style
+    */
+    transform-style: preserve-3d; 
+
+    /*  La propiedad perspective CSS determina la distancia entre el plano z=0 y el usuario para dar algo de perspectiva al elemento 3D posicionado. 
+        Cada elemento 3D con z>0 se hace más grande y con z<0 se vuelve más pequeño. La intensidad del efecto es determinado por el valor de esta propiedad.
+
+        https://developer.mozilla.org/es/docs/Web/CSS/perspective 
+    */
+    perspective: 500px;
+}
+
+
+section h3 {
+    position: relative;
+
+    width: 100%; 
+    height: 100vh;
+
+    text-align: center; /* Centra a izquierda/derecha el contenido (texto) del elemento bloque (h2) */
+    line-height: 100vh; /* Centra arriba/abajo el texto */
+
+    font-size: 5vw;
+    font-weight: 400;
+
+    color:lightcyan;
+}
+
+
+.banner {
+    display: flex;
+    flex-wrap: wrap; /* Hace que los elementos que no quepan en una línea (manteniendo sus dimensiones, si las tuvieran), salten a la linea inferior. */
+ 
+    position: absolute; /* Posicionado con respecto a su ancestro posicionado más cercano: section */
+    top: 0;
+    left: 0;
+
+    width: 100%; /* El 100% del ancho de su padre que es "section" */
+    height: 100%; /* El 100% del alto de su padre que es "section" */
+
+    overflow: hidden;
+}
+
+
+.banner .blocks {
+    display: block;
+
+    position: relative;
+
+    width: 10vw;
+    height: 5vh;
+
+    animation: animate 2s ease-in-out forwards;
+    animation-delay: 1s;   
+}
+
+
+section.active .banner .blocks {
+    background: url("fondo.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    border: 1px solid rgba(0, 0, 0, .5);
+
+    animation: animate_ 2s ease-in-out forwards;  
+}
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* La función translateZ() CSS reposiciona un elemento a lo largo del eje-z (z-axis) en el espacio 3D, es decir, más cerca o mas lejos del espectador.  */
+
+@keyframes animate {
+    0% {
+        transform: translateZ(2000px);
+
+        background: url("fondo.jpg");
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    }
+
+    100% {
+        transform: translateZ(0px);
+
+        background: url("fondo.jpg");
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+    }
+}
+
+
+@keyframes animate_ {
+    0% {
+        transform: translateZ(0px);
+
+        background: url("fondo.jpg");
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    }
+
+    100% {
+        transform: translateZ(2000px);
+
+        background: url("fondo.jpg");
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+    }
+}
+
+
+
+
